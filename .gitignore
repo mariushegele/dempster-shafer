@@ -1,0 +1,7 @@
+.vscode/
+.ipynb_checkpoints/
+__pycache__/
+venv/
+
+KI_PE17A_E1_Sprache.pdf
+data/

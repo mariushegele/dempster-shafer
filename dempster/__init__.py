@@ -1,1 +1,1 @@
-from .basic_measure import BasicMeasure
+from .basic_measure import BasicMeasure, accumulate

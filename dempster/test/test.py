@@ -1,4 +1,5 @@
 import unittest
+import copy
 
 from .. import BasicMeasure, accumulate
 
@@ -17,7 +18,17 @@ class TestDempster(unittest.TestCase):
         m1 = BasicMeasure({subjectA, subjectB, subjectC})
 
         m1.add_entry({subjectA, subjectC}, 0.8)
+        with self.assertRaises(Exception):
+            m1.add_entry({subjectC, subjectA}, 0.7)
+
         _equal(m1.get_measure('Omega'), 0.2)
+        _equal(m1.get_measure({subjectA, subjectB, subjectC}), 0.2)
+
+        with self.subTest('Can add an alternative entry'):
+            mX = copy.deepcopy(m1)
+            mX.add_entry(subjectB, 0.1)
+            _equal(mX.get_measure('Omega'), 0.1)
+            _equal(mX.get_measure(subjectB), 0.1)
 
         _equal(m1.get_belief('Omega'), 1)
         _equal(m1.get_belief({subjectA, subjectC}), 0.8)
@@ -73,9 +84,12 @@ class TestDempster(unittest.TestCase):
         _equal(m1m2m3.get_measure(subjectB), 0.04*correct_factor)
         _equal(m1m2m3.get_measure('Omega'), 0.04*correct_factor)
 
+        mInvalid = BasicMeasure({subjectA, subjectB}) # different domain
+        mInvalid.add_entry(subjectA, 0.8)
+        with self.assertRaises(Exception):
+            accumulate(m1m2m3, mInvalid)
 
 # TODO: Zweifel an X
-# test can add second entry
 
 # Oberste Wahrscheinlichkeit von X
 # Get Core

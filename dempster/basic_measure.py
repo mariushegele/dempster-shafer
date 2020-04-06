@@ -66,6 +66,11 @@ class BasicMeasure():
             if e.issubset(entry))
         return sum(value_gen)
 
+    def get_doubt(self, *args):
+        entry = self.args_to_set(*args)
+        domain_without_entry = self.entry_domain - entry
+        return self.get_belief(domain_without_entry)
+
     def get_plausibility(self, *args):
         entry = self.args_to_set(*args)
         value_gen = (m for e, m in self.measures.items()

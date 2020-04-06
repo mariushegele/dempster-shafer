@@ -33,9 +33,15 @@ class TestDempster(unittest.TestCase):
         _equal(m1.get_belief('Omega'), 1)
         _equal(m1.get_belief({subjectA, subjectC}), 0.8)
 
+        # Doubt = Belief(Omega \ X)
+        _equal(m1.get_doubt(subjectA), 0)
+        _equal(m1.get_doubt(subjectB), 0.8)
+        _equal(m1.get_doubt('Omega'), 0)
+
         _equal(m1.get_plausibility('Omega'), 1)
         _equal(m1.get_plausibility(subjectA), 1)
         _equal(m1.get_plausibility(subjectB), 0.2)
+
 
         # m2(C) = 0.6, m2(Omega) = 0.4
         m2 = BasicMeasure({subjectA, subjectB, subjectC})
@@ -88,10 +94,3 @@ class TestDempster(unittest.TestCase):
         mInvalid.add_entry(subjectA, 0.8)
         with self.assertRaises(Exception):
             accumulate(m1m2m3, mInvalid)
-
-# TODO: Zweifel an X
-
-# Oberste Wahrscheinlichkeit von X
-# Get Core
-# Unwissenheit über X
-# Bayes-Funktion

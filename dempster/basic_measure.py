@@ -35,8 +35,8 @@ class BasicMeasure():
         if self.measures[entry] != 0:
             raise Exception("Entry measure added twice")
 
-        if not (value >= 0 and value <= 1):
-            raise Exception("Value must be between 0 and 1")
+        if not (round(value, 7) >= 0 and round(value, 7) <= 1):
+            raise Exception("Value must be between 0 and 1", entry, value)
 
         self.measures[entry] = value
         prev = float(self.measures[self.entry_domain])

@@ -29,4 +29,4 @@ venv/:
 	virtualenv -p $(PY_VERSION) venv
 
 test:
-	$(PYTHON) -m unittest discover
+	$(PYTHON) -m unittest discover --verbose

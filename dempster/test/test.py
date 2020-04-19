@@ -5,9 +5,8 @@ from .. import BasicMeasure, accumulate
 
 class TestDempster(unittest.TestCase):
 
-
-    def test_can_do_dempster(self):
-        def _equal(a, b):
+    def test_can_do_dempster_shafer(self):
+        def _equal(a, b): # fuzzy equal required to test floats
             self.assertAlmostEqual(a, b, places=7)
 
         subjectA = 'Anna'
@@ -66,7 +65,7 @@ class TestDempster(unittest.TestCase):
 
         _equal(m1m2.get_belief(subjectA, subjectB), 0)
         _equal(m1m2.get_belief(subjectA, subjectC),
-                         0.48 + 0.32 + 0.12)
+               0.48 + 0.32 + 0.12)
 
         _equal(m1m2.get_plausibility(subjectA, subjectB), 0.4)
         _equal(m1m2.get_plausibility(subjectA, subjectC), 1)

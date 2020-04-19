@@ -36,8 +36,6 @@ def discretize_cont_df(cont_df):
                        'tonlage': 265.0,
                        'schallstaerke': 49.0}
 
-
-
     disc_df = cont_df.copy()
     for col in cont_df:
         lower = lower_quartiles[col]
@@ -51,7 +49,7 @@ def discretize_cont_df(cont_df):
             return "normal"
 
         disc_df[col] = cont_df[col].map(_stringify)
-    return cont_df
+    return disc_df
 
 def distribution_of_bins(discrete_window):
     """Determines the window's ratios for 'low', 'normal' and 'high'

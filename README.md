@@ -6,17 +6,27 @@ Classify the emotions in a time series of voice acoustics.
 ## Installation
 
 Requirements:
-	
-- `virtualenv`
+
+- Python 3.7
 - `pandas` and its dependencies
 
-The notebooks we produced for analysis might have some further optional requirements, that are not required to run.
+```
+pip install -r requirements.txt
+```
 
-The following target will create a virtual environment and install all requirements into it.
-This will probably not work on a Windows machine.
+### Docker
+
+If this does not work for you consider building using the Docker image. This will build an run on all CSV files in the `data/` directory.
 
 ```
-make install
+docker build -t dempster-shafer .
+docker run -it dempster-shafer
+```
+
+Or enter it with an interactive bash:
+
+```
+docker run -it --rm <image> /bin/bash
 ```
 
 ## Test
@@ -29,11 +39,13 @@ make test
 
 The Run will produce results as CSV files in `results/*.csv`.
 
+You can run on single CSV files:
+
 ```
-venv/bin/python emotion.py data/E_B02_Sequenz_1.csv
+python emotion.py data/E_B02_Sequenz_1.csv
 ```
 
-Run on all CSV files in the `data/` directory.
+Or run on all CSV files in the `data/` directory.
 
 ```
 make

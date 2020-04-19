@@ -15,7 +15,8 @@ CSV_RESULTS := $(addprefix results/,$(CSV_FILES))
 default: res 
 res: $(CSV_RESULTS)
 
-results/%.csv: data/%.csv results/
+.FORCE:
+results/%.csv: data/%.csv results/ .FORCE
 	$(PYTHON) emotion.py $<
 
 results/:
@@ -23,7 +24,6 @@ results/:
 
 install: venv/
 	$(PIP) install -r requirements.txt
-	cd frontend && npm install
 
 venv/:
 	virtualenv -p $(PY_VERSION) venv

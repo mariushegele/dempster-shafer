@@ -19,7 +19,7 @@ results/%.csv: data/%.csv results/
 	$(PYTHON) emotion.py $<
 
 results/:
-	mkdir $@
+	mkdir -p $@
 
 install: venv/
 	$(PIP) install -r requirements.txt

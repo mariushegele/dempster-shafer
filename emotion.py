@@ -16,7 +16,7 @@ import sys
 import os
 import pandas as pd
 
-from dempster import BasicMeasure, accumulate
+from dempster_shafer import BasicMeasure, accumulate
 
 
 def discretize_cont_df(cont_df):

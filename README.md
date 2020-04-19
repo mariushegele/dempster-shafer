@@ -26,7 +26,7 @@ docker run -it dempster-shafer
 Or enter it with an interactive bash:
 
 ```
-docker run -it --rm <image> /bin/bash
+docker run -it --rm dempster-shafer /bin/bash
 ```
 
 ## Test

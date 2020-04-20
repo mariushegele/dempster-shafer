@@ -1,7 +1,10 @@
 
 # Emotion Classification using Dempster-Shafer Theory 
 
+
 Classify the emotions in a time series of voice acoustics.
+
+[![Build Status](https://travis-ci.com/mariushegele/dempster-shafer.svg?branch=master)](https://travis-ci.com/mariushegele/dempster-shafer)
 
 ## Installation
 
